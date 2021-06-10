@@ -1,0 +1,170 @@
+
+<!DOCTYPE >
+        <html>
+<head>
+  <link href='https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+  <link href='//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css' rel='stylesheet' type='text/css'>
+  <link href='//cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/1.8/css/bootstrap-switch.css' rel='stylesheet' type='text/css'>
+  <link href='https://davidstutz.github.io/bootstrap-multiselect/css/bootstrap-multiselect.css' rel='stylesheet' type='text/css'>
+  <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js' type='text/javascript'></script>
+  <script src='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0/js/bootstrap.min.js' type='text/javascript'></script>
+  <script src='//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js' type='text/javascript'></script>
+  <script src='//cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/1.8/js/bootstrap-switch.min.js' type='text/javascript'></script>
+  <script src='https://davidstutz.github.io/bootstrap-multiselect/js/bootstrap-multiselect.js' type='text/javascript'></script>
+   <script src=r"C:\Users\satyawani.g\PycharmProjects\NME\Static\file.js"></script>
+
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/table12.css')}}">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
+
+
+<script>
+    $(document).ready(function(){
+        var date_input=$('input[id="id_sdate"]'); //our date input has the name "date"
+        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+        date_input.datepicker({
+            format: 'yyyy-mm-dd',
+            container: container,
+            todayHighlight: true,
+            autoclose: true,
+        })
+    })
+    
+</script>
+
+  <script>
+    $(document).ready(function(){
+        var date_input=$('input[id="id_edate"]'); //our date input has the name "date"
+        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+        date_input.datepicker({
+            format: 'yyyy-mm-dd',
+            container: container,
+            todayHighlight: true,
+            autoclose: true,
+        })
+    })
+
+
+</script>
+
+
+</head>
+<body>
+  <body style="background-color:powderblue;">
+  <div class='container'>
+    <div class='panel panel-primary dialog-panel'>
+      <div class='panel-heading'>
+        <h5>Rule</h5>
+      </div>
+      <form class='form-horizontal' role='form' action="/tester" method="post">
+        <br>
+
+         <div class='form-group'>
+          <label class='control-label col-md-2 col-md-offset-2' for='id_manu'> Manufacturing Code</label>
+
+          <div class='col-md-8'>
+            <div class='col-md-2'>
+              <div class='form-group internal'>
+               <div class="select" >
+            <select  id="1" name='id_selected'>
+                {% for i in rname %}
+
+                <option value="{{i}}">{{ i }}</option>
+
+                    {% endfor %}
+            </select>
+             </div>    </div>
+            </div>
+          </div>
+        </div>
+
+        <div class='form-group'>
+          <label class='control-label col-md-2 col-md-offset-2' for='id_manu'> Manufacturing Code</label>
+
+          <div class='col-md-8'>
+            <div class='col-md-2'>
+              <div class='form-group internal'>
+                <input class='form-control' id='id_manu' placeholder='Manufacturing Code' type='text' name="id_manu">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class='form-group'>
+          <label class='control-label col-md-2 col-md-offset-2' for='id_supplier'>Supplier Code</label>
+          <div class='col-md-8'>
+            <div class='col-md-2'>
+              <div class='form-group internal'>
+                <input class='form-control' id='id_supplier' name='id_supplier' placeholder='Supplier Code' type='text'>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class='form-group'>
+          <label class='control-label col-md-2 col-md-offset-2' for='id_product'>Product Code</label>
+          <div class='col-md-8'>
+            <div class='col-md-2'>
+              <div class='form-group internal'>
+                <input class='form-control' id='id_product' name='id_product' placeholder='Product Code' type="text">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class='form-group'>
+          <label class='control-label col-md-2 col-md-offset-2' for='id_category'>Category Code</label>
+          <div class='col-md-8'>
+            <div class='col-md-2'>
+              <div class='form-group internal'>
+                <input class='form-control' id='id_category'  name='id_category' placeholder='Category Code' type="text">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class='form-group'>
+          <label class='control-label col-md-2 col-md-offset-2' for='id_sdate'>From Date</label>
+          <div class='col-md-8'>
+            <div class='col-md-3'>
+              <div class='form-group internal input-group'>
+                <input class='form-control datepicker' id='id_sdate' name='id_sdate'placeholder="YYYY-MM-DD">
+                <span class='input-group-addon'>
+                    <i class='glyphicon glyphicon-calendar'></i>
+                  </span>
+              </div>
+            </div>
+            <label class='control-label col-md-2' for='id_edate'>To Date</label>
+            <div class='col-md-3'>
+              <div class='form-group internal input-group'>
+                <input class='form-control datepicker' id='id_edate'  name='id_edate' placeholder="YYYY-MM-DD">
+                <span class='input-group-addon'>
+                    <i class='glyphicon glyphicon-calendar'></i>
+                  </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class='form-group'>
+          <label class='control-label col-md-2 col-md-offset-2' for='id_comments'>Comments</label>
+          <div class='col-md-6'>
+            <textarea class='form-control' id='id_comments' name='id_comments'  placeholder='Additional comments' rows='3'></textarea>
+          </div>
+        </div>
+        <div class='form-group'>
+          <div class='col-md-offset-4 col-md-3'>
+            <button class='btn-lg btn-primary' type='submit'>Submit</button>
+          </div>
+
+          <div class='col-md-3'>
+            <button class='btn-lg btn-danger' style='float:right' type='submit'>Cancel</button>
+          </div>
+        </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+<div class='container'>
+
+</div>
+</body>
+</html>

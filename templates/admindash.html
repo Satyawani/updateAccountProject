@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/table12.css')}}">
+     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+
+      <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+</head>
+<body>
+
+    <input type="checkbox" id="sidebar-toggle">
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h3 class="brand">
+                <span class="ti-unlink"></span>
+                <span>Wellness Forever</span>
+            </h3>
+            <label for="sidebar-toggle" class="ti-menu-alt"></label>
+        </div>
+
+        <div class="sidebar-menu">
+            <ul>
+                <li>
+                    <a href="/admindash">
+                        <span class="ti-home"></span>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ruleform">
+                        <span class="ti-face-smile"></span>
+                        <span>Add New Rule</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/rulemodify">
+                        <span class="ti-agenda"></span>
+                        <span>Enable/Disable Rule</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="main-content">
+
+        <header>
+            <div class="search-wrapper">
+                <span class="ti-search"></span>
+                <input type="search" placeholder="Search">
+            </div>
+
+            <div class="social-icons">
+                <span class="ti-bell"></span>
+                <span class="ti-comment"></span>
+                <div></div>
+            </div>
+        </header>
+
+        <main>
+
+            <h2 class="dash-title">Overview</h2>
+
+            <div class="dash-cards">
+                <div class="card-single">
+                    <div class="card-body">
+                        <span class="ti-briefcase"></span>
+                        <div>
+                            <h5>Total Rule Created</h5>
+                            <h4>{{tlen}}</h4>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="card-single">
+                    <div class="card-body">
+                        <span class="ti-reload"></span>
+                        <div>
+                            <h5>Total Active Rule</h5>
+                            <h4>{{alen}}</h4>
+                            <a href="#" id="activename" value="1">View Active Rule</a>
+                        </div>
+
+                    </div>
+
+                </div>
+                    <div class="card-single">
+                    <div class="card-body">
+                        <span class="ti-reload"></span>
+                        <div>
+                            <h5>Total Deactive Rule</h5>
+                            <h4>{{delen}}</h4>
+                            <a href="#">View Deactive Rule</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <section class="recent">
+                 <div class="activity-grid">
+                    <div class="activity-card">
+                        <h3>Recent activity</h3>
+
+                        <div class="table-responsive" id="result">
+                            <table>
+
+                                <thead>
+
+                                    <tr>
+
+                                        {% for i in rh%}
+                                        <th>{{i}}</th>
+                                        {% endfor %}
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                        {% for i in rcont%}
+                                        <tr>
+                                            {% for j in i %}
+                                        <td>{{j}}</td>
+                                            {% endfor %}
+                                        </tr>
+                                        {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
+                 </div>
+            </section>
+
+
+
+        </main>
+
+    </div>
+
+<script>
+$(document).ready(function(){
+  load_data();
+  function load_data(query)
+  {
+   $.ajax({
+    url:"/file123",
+    method:"POST",
+    data:{query:query},
+    success:function(data)
+    {
+    console.log(data)
+      $('#result').html(data);
+      $("#result").append(data.htmlresponse);
+
+    }
+   });
+  }
+  $('#activename').click(function(){
+    var search = $(this).val();
+    if(search != ''){
+    load_data(search);
+   }else{
+    load_data();
+   }
+  });
+});
+</script>
+</body>
+</html>

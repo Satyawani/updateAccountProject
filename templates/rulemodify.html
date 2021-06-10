@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!-- Created By CodingLab - www.codinglabweb.com -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <!---<title> Responsive Registration Form | CodingLab </title>--->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/rulform.css') }}">
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/table12.css')}}">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <script>
+        $(document).ready(function() {
+            $("button").click(function() {
+                //$("#d").trigger("reset");
+                //$("#d").get(0).reset();
+                $("#d")[0].reset()
+            });
+        });
+    </script>
+   </head>
+<body>
+<input type="checkbox" id="sidebar-toggle">
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h3 class="brand">
+                <span class="ti-unlink"></span>
+                <span>Wellness Forever</span>
+            </h3>
+            <label for="sidebar-toggle" class="ti-menu-alt"></label>
+        </div>
+
+        <div class="sidebar-menu">
+            <ul>
+                <li>
+                    <a href="/admindash">
+                        <span class="ti-home"></span>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ruleform">
+                        <span class="ti-face-smile"></span>
+                        <span>Add New Rule</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/rulemodify">
+                        <span class="ti-agenda"></span>
+                        <span>Enable/Disable Rule</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+<div class="container2">
+<div class="title">Enable/Disable Rule</div>
+    <div class="content" >
+<form action="/rulem" method="post" id="d">
+    <div class="user-details" >
+
+        <div class="input-box">
+             <span class="details">Rule Name</span>
+            <div class="select" >
+            <select  id="1" name='id_selected'>
+                {% for i in rname %}
+
+                <option value="{{i}}">{{ i }}</option>
+
+                    {% endfor %}
+            </select>
+             </div>
+        </div>
+
+ <div class="gender-details">
+        <input type="radio" name="rm" id="a1" value="1">
+        <input type="radio" name="rm" id="a2" value="0">
+        <span class="details">  Rule Status </span>
+        <div class="category">
+            <label for="a1">
+                <span class="dot one"></span>
+                <span class="gender">Active</span>
+            </label>
+
+            <p>&nbsp;&nbsp;</p>
+            <label for="a2">
+                <span class="dot two"></span>
+                <span class="gender">Deactive</span>
+            </label>
+        </div>
+        </div>
+
+    </div>
+    <div class="button2">
+        <input type="submit" value="Submit">
+    </div>
+</form>
+</div>
+</div>
+</body>
+</html>

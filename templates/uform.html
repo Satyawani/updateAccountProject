@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<!-- Created By CodingLab - www.codinglabweb.com -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+
+
+
+
+      <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/rulform.css') }}">
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/table12.css')}}">
+
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script> </head>
+
+
+
+
+
+
+   </head>
+<body>
+
+<div class="container">
+<div class="title">User Panel</div>
+    <div class="content" >
+<form action="/uf" method="post" id="d">
+    <div class="user-details" >
+      <div class="input-box">
+             <span class="details">Rule Name</span>
+            <div class="select" >
+            <select  id="idselected" name='id_selected' >
+                {% for i in rname %}
+
+                <option value="{{i}}">{{ i }}</option>
+
+                    {% endfor %}
+            </select>
+             </div>
+          <input type="hidden" name="hidden_value" id="hidden_value" />
+        </div>
+        <div class="input-box">
+            <span class="details">Discount%</span>
+            <input type="text" placeholder="Enter your Discount%" id="id_dis"  name='id_dis'   readonly="readonly">
+        </div>
+        <div class="input-box">
+            <span class="details">Flat Price</span>
+            <input type="text" placeholder="Enter your Flat Price" id='id_flat'  name='id_flat'   readonly="readonly">
+        </div>
+        <div class="input-box">
+            <span class="details">Threshold Quantity</span>
+            <input type="text" placeholder="Enter your Threshold Quantity"  id='id_qty' name='id_qty'  readonly="readonly">
+        </div>
+        <div class="input-box">
+            <span class="details">Threshold Amount</span>
+            <input type="text" placeholder="Threshold Amount" id='id_atm12'  name='id_amt'   readonly="readonly">
+        </div>
+        <div class="input-box">
+             <span class="details">Transaction Type</span>
+              <input type="text" placeholder="Transaction Type " id='id_trans'  name='id_trans'   readonly="readonly">
+        </div>
+         <div class="input-box">
+             <span class="details">Branch Code</span>
+              <input type="text" placeholder="Branch Code"  id='id_branch' name='id_branch'  readonly="readonly">
+            </div>
+
+        <div class="input-box">
+             <span class="details">Brand</span>
+             <input type="text" placeholder="Brand"  id='id_brand' name='id_brand'  readonly="readonly">
+        </div>
+         <div class="input-box">
+             <span class="details">Manufacture</span>
+             <input type="text" placeholder="Manufacture" id='id_manu'  name='id_manu'  readonly="readonly">
+         </div>
+
+         <div class="input-box">
+             <span class="details">Supplier </span>
+               <input type="text" placeholder="Supplier" id='id_supp' name='id_supp'  readonly="readonly">
+         </div>
+        <div class="input-box">
+             <span class="details">Category Type</span>
+            <input type="text" placeholder="Category" id='id_cate' name='id_cate'   readonly="readonly">
+        </div>
+         <div class="input-box">
+             <span class="details">Product</span>
+  <input type="text" placeholder="Product" id ='id_prod'  name='id_prod'  readonly="readonly">
+        </div>
+    <div class="input-box">
+        <span class="details">  Price Type</span>
+          <input type="text" placeholder="Price Type" id='id_price'  name='id_price'   readonly="readonly">
+        </div>
+
+        <div class="input-box" >
+            <span class="details">  Frequency Type</span>
+        <input type="text" placeholder="Frequency Type"   id='id_freq'  name='id_freq'  readonly="readonly">
+        </div>
+
+        <div class="input-box" >
+            <span class="details">  Start Date</span>
+        <input type="text" placeholder="Frequency Type"   id='id_start'  name='id_start'  readonly="readonly">
+        </div>
+
+        <div class="input-box" >
+            <span class="details">  From Date </span>
+        <input class='form-control datepicker' id='id_sdate'  name='id_sdate' placeholder="YYYY-MM-DD">
+        </div>
+
+        <div class="input-box" >
+            <span class="details">  To Date</span>
+            <input class='form-control datepicker' id='id_edate'  name='id_edate' placeholder="YYYY-MM-DD">
+
+            </div>
+
+        </div>
+
+
+    <div class="button">
+        <input type="submit" value="Register">
+    </div>
+       <script type="text/javascript">
+            // When the document is ready
+            $(document).ready(function () {
+        var date_input=$('input[id="id_sdate"]'); //our date input has the name "date"
+        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+        date_input.datepicker({
+                    format: 'yyyy-mm-dd',
+                    container: container,
+            todayHighlight: true,
+            autoclose: true,
+                });
+
+            });
+        </script>
+    <script type="text/javascript">
+            // When the document is ready
+            $(document).ready(function () {
+        var date_input=$('input[id="id_edate"]'); //our date input has the name "date"
+        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+        date_input.datepicker({
+                    format: 'yyyy-mm-dd',
+                    container: container,
+                     todayHighlight: true,
+                     autoclose: true,
+                });
+
+            });
+        </script>
+      <script>
+        $(document).ready(function() {
+            $("button").click(function() {
+                //$("#d").trigger("reset");
+                //$("#d").get(0).reset();
+                $("#d")[0].reset()
+            });
+        });
+    </script>
+<script>
+$(document).ready(function(){
+    load_data();
+    function load_data(query)
+    {
+        $.ajax({
+            url:"/fetchrecords",
+            method:"POST",
+            data:{query:query},
+            success:function(data)
+            {
+            console.log(data);
+            if (data[14]==1){
+                         data[14]="Monthly";
+                        }
+                        else if (data[14]==2){
+                        data[14]="Quarterly";
+                        }
+                        else{
+                        data[14]="yearly";
+                        }
+                 let date1 = JSON.stringify(data[15])
+                    date1 = date1.slice()
+                $("#id_dis").val(data[17]).attr("value")
+                 $("#id_flat").val(data[18]).attr("value")
+                  $("#id_qty").val(data[12]).attr("value")
+                   $("#id_atm12").val(data[13]).attr("value")
+                    $("#id_trans").val(data[3]).attr("value")
+                     $("#id_manu").val(data[9]).attr("value")
+                      $("#id_supp").val(data[10]).attr("value")
+                       $("#id_cate").val(data[11]).attr("value")
+                        $("#id_prod").val(data[8]).attr("value")
+                        $("#id_price").val(data[16]).attr("value")
+                         $("#id_freq").val(data[14]).attr("value")
+                        $("#id_branch").val(data[6]).attr("value")
+                        $("#id_brand").val(data[7]).attr("value")
+                        $("#id_start").val(date1).attr("value")
+
+
+
+
+
+
+
+
+
+
+            }
+        })
+    }
+
+    $('#idselected').change(function(){
+       var query = $(this).val();
+        load_data(query);
+    });
+
+});
+
+</script>
+
+</form>
+</div>
+</div>
+</body>
+</html>

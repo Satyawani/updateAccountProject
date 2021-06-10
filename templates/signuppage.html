@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - youtube.com/codingnepal -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Wellness Forever</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/loginpagecss.css')}}">
+  </head>
+  <body>
+    <div class="center">
+      <h1>Login</h1>
+      <form  action="/signup" method="POST" >
+        <div class="txt_field">
+          <input type="text"  name="email_id"required>
+          <span></span>
+          <label>Email Id</label>
+        </div>
+        <div class="txt_field">
+          <input type="text" name="uname" required>
+          <span></span>
+          <label>Username</label>
+        </div>
+        <div class="txt_field">
+          <input type="password"  name="upassd"required>
+          <span></span>
+          <label>Password</label>
+        </div>
+
+        <input type="submit" value="Login">
+      </form>
+    </div>
+
+  </body>
+</html>

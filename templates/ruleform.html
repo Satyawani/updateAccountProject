@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<!-- Created By CodingLab - www.codinglabweb.com -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <!---<title> Responsive Registration Form | CodingLab </title>--->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/rulform.css') }}">
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/table12.css')}}">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script> </head>
+
+  <script type="text/javascript">
+            // When the document is ready
+            $(document).ready(function () {
+       var date_input=$('input[id="id_sdate"]'); //our date input has the name "date"
+        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+              date_input.datepicker({
+                       format: 'yyyy-mm-dd',
+                       container: container,
+            todayHighlight: true,
+            autoclose: true,
+                });
+
+            });
+        </script>
+
+<script>
+        $(document).ready(function() {
+            $("button").click(function() {
+                //$("#d").trigger("reset");
+                //$("#d").get(0).reset();
+                $("#d2")[0].reset()
+            });
+        });
+    </script>
+
+   </head>
+<body>
+ <input type="checkbox" id="sidebar-toggle">
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h3 class="brand">
+                <span class="ti-unlink"></span>
+                <span>Wellness Forever</span>
+            </h3>
+            <label for="sidebar-toggle" class="ti-menu-alt"></label>
+        </div>
+
+        <div class="sidebar-menu">
+            <ul>
+                <li>
+                    <a href="/admindash">
+                        <span class="ti-home"></span>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ruleform">
+                        <span class="ti-face-smile"></span>
+                        <span>Add New Rule</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/rulemodify">
+                        <span class="ti-agenda"></span>
+                        <span>Enable/Disable Rule</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+<div class="container">
+<div class="title">Admin Configuration</div>
+    <div class="content" >
+<form action="/alogin" method="post" id="d2">
+    <div class="user-details" >
+        <div class="input-box">
+            <span class="details">Rule  Name</span>
+            <input type="text" placeholder="Enter your Rule" name='id_rulename' required>
+        </div>
+        <div class="input-box">
+            <span class="details">Discount%</span>
+            <input type="text" placeholder="Enter your Discount%" name='id_dis'required>
+        </div>
+        <div class="input-box">
+            <span class="details">Flat Price</span>
+            <input type="text" placeholder="Enter your Flat Price" name='id_flat'>
+        </div>
+        <div class="input-box">
+            <span class="details">Threshold Quantity</span>
+            <input type="text" placeholder="Enter your Threshold Quantity" name='id_qty'>
+        </div>
+        <div class="input-box">
+            <span class="details">Threshold Amount</span>
+            <input type="text" placeholder="Threshold Amount" name='id_amt'>
+        </div>
+        <div class="input-box">
+             <span class="details">Transaction Type</span>
+            <div class="select" >
+            <select  id="1" name='id_trans'>
+                <option>Select a Transaction Type</option>
+                <option value="Purchase">Purchase</option>
+                <option value="Sales">Sales</option>
+            </select>
+             </div>
+        </div>
+         <div class="input-box">
+             <span class="details">Branch Code</span>
+            <div class="select" >
+            <select  id="13" name='id_branch' >
+                <option>Select a Brand</option>
+                <option value="All">ALL</option>
+                <option value="ZEDC">ZEDC</option>
+            </select>
+            </div>
+        </div>
+        <div class="input-box">
+             <span class="details">Brand</span>
+            <div class="select" >
+            <select  id="2" name='id_brand' >
+                <option>Select a Brand</option>
+                <option value="BM0935">Durex</option>
+                <option value="All">ALL</option>
+            </select>
+            </div>
+        </div>
+         <div class="input-box">
+             <span class="details">Manufacture </span>
+            <div class="select">
+            <select id="3" name='id_manu' >
+                <option>Select a Manufacture</option>
+                <option value="MF4116">Beardo</option>
+                <option value="MF1499">Reckitt Benckiser(Ltd.)</option>
+                <option value="MF0685">Godrej Consumer Product limited</option>
+            </select>
+             </div>
+         </div>
+         <div class="input-box">
+             <span class="details">Supplier</span>
+
+            <div class="select">
+
+                <select  id="5" name='id_supplier' >
+                    <option>Select a Supplier</option>
+                    <option value="All">ALL</option>
+                </select>
+            </div>
+         </div>
+        <div class="input-box">
+             <span class="details">Category</span>
+
+                <div class="select">
+
+                    <select id="6"  name='id_category'>
+                        <option>Select a Category</option>
+                        <option value="All">ALL</option>
+                    </select>
+                </div>
+        </div>
+         <div class="input-box">
+             <span class="details">Product</span>
+
+                <div class="select">
+
+                    <select id="7"  name='id_product'>
+                        <option>Select a Product</option>
+                        <option value="All">ALL</option>
+                    </select>
+                </div>
+        </div>
+    <div class="input-box">
+        <input type="radio" name="gender12"  id="dot-1" value="1">
+        <input type="radio" name="gender12" id="dot-2" value="2">
+        <span class="details">  Price Type</span>
+        <div class="category">
+            <label for="dot-1">
+                <span class="dot one"></span>
+                <span class="gender">MRP-Tax</span>
+            </label>
+
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+            <label for="dot-2">
+                <span class="dot two"></span>
+                <span class="gender">Effective Purchase</span>
+            </label>
+        </div>
+        </div>
+ <div class="input-box">
+        <input type="radio" name="rstatus" id="a1" value="1">
+        <input type="radio" name="rstatus" id="a2" value="0">
+        <span class="details">  Rule Status </span>
+        <div class="category">
+            <label for="a1">
+                <span class="dot one"></span>
+                <span class="gender">Active</span>
+            </label>
+
+            <p>&nbsp;&nbsp;</p>
+            <label for="a2">
+                <span class="dot two"></span>
+                <span class="gender">Deactive</span>
+            </label>
+        </div>
+        </div>
+        <div class="input-box" >
+        <input type="radio" name="rf" id="w1" value="1">
+        <input type="radio" name="rf" id="q1"value="2">
+        <input type="radio" name="rf" id="y12" value="3">
+        <span class="details">  Frequency Type</span>
+        <div class="category">
+            <p>&nbsp;&nbsp;</p>
+            <label for="w1">
+                <span class="dot one"></span>
+                <span class="gender">Monthly</span>
+            </label>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+            <label for="q1">
+                <span class="dot two"></span>
+                <span class="gender">Quarterly</span>
+            </label>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+            <label for="y12" >
+                <span class="dot three"></span>
+                <span class="gender">Yearly</span>
+            </label>
+        </div>
+        </div>
+        <div class="input-box" >
+            <span class="details">  Start Date </span>
+        <input class='datepicker' id='id_sdate'  name='rstartdate' placeholder="YYYY-MM-DD">
+        </div>
+    </div>
+    <div class="button">
+        <input type="submit" value="Register">
+    </div>
+</form>
+</div>
+</div>
+</body>
+</html>
